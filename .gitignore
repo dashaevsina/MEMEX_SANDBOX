@@ -1,6 +1,6 @@
 _data/
 .DS_Store
-_misc/
+Practice/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
