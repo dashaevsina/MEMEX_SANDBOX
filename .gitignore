@@ -1,6 +1,5 @@
 _data/
 .DS_Store
-Practice/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
