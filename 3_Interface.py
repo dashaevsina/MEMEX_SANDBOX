@@ -7,11 +7,12 @@ import functions
 # VARIABLES #################################################
 #############################################################
 
-settingsFile = "./settings.yml"
-settings = yaml.safe_load(open(settingsFile))
+settings = functions.loadYmlSettings("settings.yml")
+#! memexPath = settings["path_to_memex"]
 
-memexPath = settings["path_to_memex"]
-langKeys = yaml.safe_load(open(settings["language_keys"]))
+#############################################################
+# FUNCTIONS #################################################
+#############################################################
 
 # generate interface for the publication
 def generatePublicationInterface(citeKey, pathToBibFile):
@@ -47,7 +48,7 @@ def generatePublicationInterface(citeKey, pathToBibFile):
             pageTemp = pageTemp.replace("@CITATIONKEY@", citeKey)
 
             if k != "DETAILS":
-                mainElement = '<img src="@PAGEFILE@" width="100%" alt="">'.replace("@PAGEFILE@", "%s.png" % k)
+                mainElement = '<ing src="@PAGEFILE@" width="100%" alt=">'.replace("@PAGEFILE@", "%s.png" % k)
                 pageTemp = pageTemp.replace("@MAINELEMENT@", mainElement)
                 pageTemp = pageTemp.replace("@OCREDCONTENT@", ocred[k].replace("\n", "<br>"))
             else:
@@ -76,4 +77,81 @@ def generatePublicationInterface(citeKey, pathToBibFile):
 
             pagePath = os.path.join(pathToBibFile.replace(citeKey+".bib", ""), "pages", "%s.html" % k)
             with open(pagePath, "w", encoding="utf8") as f9:
-                f9.write(pageTemp)
+                f9.write(pageTemp)    
+
+# generate the INDEX and the CONTENTS pages
+def generateMemexStartingPages(pathToMemex):
+    # load index template
+    with open(settings["template_index"], "r", encoding="utf8") as ft:
+        template =ft.read()
+
+    # add index.html
+    with open(settings["content_index"], "r", encoding="utf8") as fi:
+        indexData = fi.read()
+        with open(os.path.join(pathToMemex, "index.html"), "w", encoding="utf8") as f9:
+            f9.write(template.replace("@MAINCONTENT@", indexData))
+
+    # load bibliographical data for processing
+    publicationDic = {} # key = citationKey; value = recordDic
+
+    for subdir, dirs, files in os.walk(pathToMemex):
+        for file in files:
+            if file.endswith(".bib"):
+                pathWhereBibIs = os.path.join(subdir, file)
+                tempDic = functions.loadBib(pathWhereBibIs)
+                publicationDic.update(tempDic)
+
+    # generate data for the main CONTENTS
+    singleItemTemplate = '<li><a href="@RELATIVEPATH/pages/DETAILS.html">[@CITATIONKEY@]</a> @AUTHOROREDITOR@ (@DATE@) - <i>@TITLE@</i>'
+    contentsList = []
+
+    for citeKey,bibRecord in publicationDic.items():
+        relativePath = functions.generatePublPath(pathToMemex, citeKey).replace(pathToMemex, "")
+
+        authorOrEditor = "[No data]"
+        if "editor" in bibRecord:
+            authorOrEditor = bibRecord["editor"]
+        if "author" in bibRecord:
+            authorOrEditor = bibRecord["author"]
+
+        date = bibRecord["date"][:4]
+
+        title = bibRecord["title"]
+
+        # forming a record
+        recordToAdd = singleItemTemplate
+        recordToAdd = recordToAdd.replace("@RELATIVEPATH@", relativePath)
+        recordToAdd = recordToAdd.replace("@CITATIONKEY@", citeKey)
+        recordToAdd = recordToAdd.replace("@AUTHOROREDITOR@", authorOrEditor)
+        recordToAdd = recordToAdd.replace("@DATE@", date)
+        recordToAdd = recordToAdd.replace("@TITLE@", title)
+
+        recordToAdd = recordToAdd.replace(", ").replace("}", "")
+
+        contentsList.append(recordToAdd)
+
+    contents = "\n<ul>\n%s\n</ul>" % "\n".join(sorted(contentsList))
+    mainContent = "<h1>CONTENTS of MEMEX</h1>\n\n" + contents
+
+    # save the CONTENTS page
+    with open(os.path.join(pathToMemex, "contents.html"), "w", encoding="utf8") as f9:
+        f9.write(template.replace("@MAINCONTENT@", mainContent))
+
+#############################################################
+# FUNCTIONS TESTING #########################################
+#############################################################
+
+# generatePublicationInterface("bovesse_documents_1957", "./MEMEX_SANDBOX/_data/b/bo/bovesse_documents_1957/bovesse_documents_1957.bib")
+
+############################################################
+# PROCESS ALL RECORDS #######################################
+############################################################
+
+def processAllRecords(pathToMemex):
+    files = functions.dicOfRelevantFiles(pathToMemex, ".bib")
+    for citeKey, pathToBibFile in files.items():
+        #print(citeKey)
+        generatePublicationInterface(citeKey, pathToBibFile)
+    generateMemexStartingPages(pathToMemex)
+
+processAllRecords(settings["path_to_memex"])

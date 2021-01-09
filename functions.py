@@ -110,9 +110,21 @@ processAllRecords(bibData)
 
 print("Done!")
 
-# TOC Links: function generates links to all pages in a given publication to make 
-# navigation and moving around easier. Each page in the publication receives its own
-# list of links where the current page is coloured red.
+# Extra function: function generates a dictionary of citation keys and paths to specify 
+# types of files.
+def dicOfRelevantFiles(pathToMemex, extension):
+    dic = {}
+    for subdir, dirs, files in os.walk(pathToMemex):
+        for file in files:
+            # process publication of data
+            if file.endswith(extension):
+                key = file.replace(extension, "")
+                value = os.path.join(subdir, file)
+                dic[key] = value
+    return(dic)
+
+# line 165!
+# HTML; generates TOCs for each page; the current page is highlighted in red
 def generatePageLinks(pNumList):
     listMod = ["DETAILS"]
     listMod.extend(pNumList)
@@ -128,23 +140,9 @@ def generatePageLinks(pNumList):
 
     return(pageDic)
 
-# HTML-Friendly BIB: function makes a bib record look more readable, more HTML friendly.
-# It removes excessive curly brackets and fields that are unnecessary for the display
+# HTML: males BIB more HTML friendly
 def prettifyBib(bibText):
     bibText = bibText.replace("{{", "").replace("}}", "")
     bibText = re.sub(r"\n\s+file = [^\n]+", "", bibText)
     bibText = re.sub(r"\n\s+abstract = [^\n]+", "", bibText)
     return(bibText)
-
-# Extra function: function generates a dictionary of citation keys and paths to specify 
-# types of files.
-def dicOfRelevantFiles(pathToMemex, extension):
-    dic = {}
-    for subdir, dirs, files in os.walk(pathToMemex):
-        for file in files:
-            # process publication of data
-            if file.endswith(extension):
-                key = file.replace(extension, "")
-                value = os.path.join(subdir, file)
-                dic[key] = value
-    return(dic)
