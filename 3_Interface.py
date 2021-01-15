@@ -1,4 +1,4 @@
-import os, yaml, json
+import os, json
 
 # SCRIPT WITH OUR PREVIOUS FUNCTIONS    
 import functions
@@ -48,7 +48,7 @@ def generatePublicationInterface(citeKey, pathToBibFile):
             pageTemp = pageTemp.replace("@CITATIONKEY@", citeKey)
 
             if k != "DETAILS":
-                mainElement = '<ing src="@PAGEFILE@" width="100%" alt=">'.replace("@PAGEFILE@", "%s.png" % k)
+                mainElement = '<img src="@PAGEFILE@" width="100%" alt=image of the OCRED content...>'.replace("@PAGEFILE@", "%s.png" % k)
                 pageTemp = pageTemp.replace("@MAINELEMENT@", mainElement)
                 pageTemp = pageTemp.replace("@OCREDCONTENT@", ocred[k].replace("\n", "<br>"))
             else:
