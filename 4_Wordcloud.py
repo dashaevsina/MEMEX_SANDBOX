@@ -1145,3 +1145,5 @@ createWordCloud(sinardet, sinardet_territorialite_2008)
 createWordCloud(wever, wever_les_2016)
 createWordCloud(willems, willems_bien_2015)
 createWordCloud(wuilmart, wuilmart_peche_2007)
+
+# createWordCloud(savePath, AndrewsTree2013)
