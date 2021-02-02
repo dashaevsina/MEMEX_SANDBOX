@@ -69,4 +69,4 @@ searchPhrase  = r"((bataille) des\b (E|É|é|e)perons d(’|')or)|(bataille) de\
 #searchPhrase  = r"corpus-?based"
 
 searchOCRresults(settings["path_to_memex"], searchPhrase)
-#exec(open("9_Interface_IndexPage.py").read())
+exec(open("9_Interface_IndexPage.py").read())

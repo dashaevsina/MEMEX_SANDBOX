@@ -1,99 +1,127 @@
+.mainList {
+  font-family: 'Brill', 'Gentium', 'Baskerville';  
+  font-size: 20px;
+}
+
+tr:hover {
+  background-color: white;
+}
+
+.hidden { font-size: 0; }
 
 .search_input_font {
-    font-family: 'Amiri', 'Geeza Pro', 'Courier New', 'Arial', 'LateefRegular';
-    font-size: 28px;
+  font-family: 'Amiri', 'Geeza Pro', 'Courier New', 'Arial', 'LateefRegular';
+  font-size: 28px;
 }
 
 .english{
-    font-family: 'Brill', 'Gentium', 'Baskerville';
-    font-size: 24px;
-    line-height: 1;
-    margin: 20px 0;
-    padding-left: 20px;
-    background-color: white;
-    margin-right: 5%;
-    /*margin-left:  5%;*/
+  font-family: 'Brill', 'Gentium', 'Baskerville';
+  font-size: 24px;
+  line-height: 1;
+  margin: 20px 0;
+  padding-left: 20px;
+  background-color: white;
+  margin-right: 5%;
+  /*margin-left:  5%;*/
 }
 
 .blockquote{
-    font-family: 'Brill', 'Gentium', 'Baskerville';
-    font-size: 24px;
-    line-height: 1;
-    margin: 20px 0;
-    background-color: white;
-    margin-right: 5%;
-    margin-left:  5%;
+  font-family: 'Brill', 'Gentium', 'Baskerville';
+  font-size: 20px;
+  line-height: 1;
+  margin: 20px 0;
+  background-color: white;
+  margin-right: 5%;
+  margin-left:  5%;
 }
 
 .ID{
-    font-family: 'Courier New';
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 1;
-    margin: 36px 0;
-    background-color: #DDD;
-    color: #b30000;
-    display: inline;
-    /*margin-right: 15%;*/
-    /*margin-left:  15%;*/
+  font-family: 'Courier New';
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1;
+  margin: 36px 0;
+  /*background-color: white;*/
+  color: #b30000;
+  display: inline;
+}
+
+.searchString{
+  font-family: 'Courier New';
+  font-weight: bold;
+  /*font-size: 18px;*/
+  line-height: 1;
+  margin: 36px 0;
+  /*background-color: white;*/
+  color: black;
+  display: inline;
 }
 
 .bib{
-    font-family: 'Courier New';
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 1;
-    margin: 36px 0;
-    background-color: "white";
-    color: "black";
-    display: inline;
-    margin-right: 10%;
-    margin-left:  10%;
-    margin-bottom: 100px;
-    white-space: pre;
+  font-family: 'Courier New';
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1;
+  margin: 36px 0;
+  background-color: "white";
+  color: "black";
+  display: inline;
+  margin-right: 10%;
+  margin-left:  10%;
+  white-space: pre;
 }
 
 .searchResult{
-    text-decoration: none;
-    font-weight: bold;
-    color: #ff0000;
+  text-decoration: none;
+  font-weight: bold;
+  color: #ff0000;
+}
+
+.connections {
+  font-size: 10px;
+  font-weight: normal;
+  font-family: "Baskerville", "Georgia", serif;
 }
 
 .URI {
-    font-size: 22px;
-    font-weight: normal;
-    font-family: "Courier New", 'Amiri', 'Lateef', 'Geeza Pro', serif;
-    padding: 0;
-    margin: 0;
-    text-indent: 0;
-    color: #b30000;
-    text-align: center;
+  font-size: 22px;
+  font-weight: normal;
+  font-family: "Courier New", 'Amiri', 'Lateef', 'Geeza Pro', serif;
+  padding: 0;
+  margin: 0;
+  text-indent: 0;
+  color: #b30000;
+  text-align: center;
 }
 
 .maintext{
-    margin-top: 0%;
-    margin-right: 10px; /* Same as the width of the sidenav */
-    margin-left:  150px;
-    margin-bottom: 0%;
-    background-color: white;
-    padding-left: 0px; 
+  margin-top: 0%;
+  margin-right: 10px; /* Same as the width of the sidenav */
+  margin-left:  150px;
+  margin-bottom: 0%;
+  background-color: white;
+  padding-left: 0px; 
 }
 
 a {
-    text-decoration: none;
-    font-weight: bold;
-    color: #b30000;
+  text-decoration: none;
+  color: #b30000;
 }
 
 p{
-    text-indent: 0px;
-    text-align: justify;
-    text-justify: inter-word;
+  text-indent: 0px;
+  text-align: justify;
+  text-justify: inter-word;
 }
 
 li{
-  margin-top: 25px;
-  font-size: 24px;
+  margin-top: 0px;
+  font-size: 20px;
+  padding-bottom: 15px;
+}
+
+h1,h2,h3{
+  text-align: center;
 }
 
 /* collapsible elements*/
@@ -103,7 +131,7 @@ li{
   background-color: #777;
   color: white;
   cursor: pointer;
-  padding: 18px;
+  padding: 10px;
   width: 100%;
   border: none;
   text-align: left;
@@ -121,25 +149,24 @@ li{
   font-weight: bold;
   float: right;
   margin-left: 5px;
+  margin-top: 20px;
 }
 
 .active:after {
-  /*content: "\2212";*/
+content: "\2212";
+}
+
+.refTop {
+  padding: 0 5px;
 }
 
 .content {
-  font-family: "Baskerville", 'Garamond', serif;
-  background-color: white;
-  color: black;
-  cursor: auto;
-  width: 97%;
-  margin: 30px;
-  text-align: justify;
-  outline: none;
-  font-size: 18px;
+  /*padding: 0 18px;
+  font-size: 8px;*/
   max-height: 0;
-  overflow: visible;
+  overflow: hidden;
   transition: max-height 0.2s ease-out;
+  /*background-color: #f1f1f1;*/
 }
 
 
@@ -147,11 +174,11 @@ li{
 /* from page viewer */
 
 body {
-    width: 100%;
-    background-color: "white";
-    font-family: Baskerville, Brill;
-    margin: 0;
-    padding: 0;
+  width: 100%;
+  background-color: "white";
+  font-family: Baskerville, Brill;
+  margin: 0;
+  padding: 0;
 }
 
 table.navtable { width: 100%; }
@@ -164,46 +191,12 @@ table.navtable { width: 100%; }
 /*////////////// nav bar start /////////////////*/
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #333;
-    overflow: hidden;
+  background-color: #333;
+  overflow: hidden;
 }
 
 /* Style the links inside the navigation bar */
 .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-/*/////////////// nav bar end /////////////////*/
-
-
-/*////////////// bottom nav bar start /////////*/
-
-.bottomnav {
-  background-color: #333;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0;
-  width: 87%;
-}
-
-/* Style the links inside the navigation bar */
-.bottomnav a {
   float: left;
   color: #f2f2f2;
   text-align: center;
@@ -213,15 +206,49 @@ table.navtable { width: 100%; }
 }
 
 /* Change the color of links on hover */
-.bottomnav a:hover {
+.topnav a:hover {
   background-color: #ddd;
   color: black;
 }
 
 /* Add a color to the active/current link */
-.bottomnav a.active {
+.topnav a.active {
   background-color: #4CAF50;
   color: white;
+}
+/*/////////////// nav bar end /////////////////*/
+
+
+/*////////////// bottom nav bar start /////////*/
+
+.bottomnav {
+background-color: #333;
+overflow: hidden;
+position: fixed;
+bottom: 0;
+width: 87%;
+}
+
+/* Style the links inside the navigation bar */
+.bottomnav a {
+float: left;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.bottomnav a:hover {
+background-color: #ddd;
+color: black;
+}
+
+/* Add a color to the active/current link */
+.bottomnav a.active {
+background-color: #4CAF50;
+color: white;
 }
 
 /*////////////// bottom nav bar end /////////////////*/
@@ -229,55 +256,55 @@ table.navtable { width: 100%; }
 /*////////////// side nav bar start /////////////////*/
 /* Add a black background color to the top navigation */
 .sidenav {
-  height: 100%;
-  width: 150px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: white;
-  overflow-x: hidden;
-  padding-top: 5px;
+height: 100%;
+width: 150px;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: white;
+overflow-x: hidden;
+padding-top: 5px;
 }
 
 .sidenav a {
-  padding-left: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  color: #D6DBDF;
-  /*display: block;*/
+padding-left: 5px;
+text-decoration: none;
+font-weight: bold;
+font-size: 18px;
+color: #D6DBDF;
+/*display: block;*/
 }
 
 .sidenav a:hover {
-  color: red;
+color: red;
 }
 /*/////////////// side nav bar end /////////////////*/
 
 /*////////////// side nav index bar start /////////////////*/
 /* Add a black background color to the top navigation */
 .sidenavindex {
-  height: 100%;
-  width: 150px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #333;
-  overflow-x: hidden;
-  padding-top: 5px;
+height: 100%;
+width: 150px;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: #333;
+overflow-x: hidden;
+padding-top: 5px;
 }
 
 .sidenavindex a {
-  padding-left: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 18px;
-  color: #D6DBDF;
-  display: block;
+padding-left: 5px;
+text-decoration: none;
+font-weight: bold;
+font-size: 18px;
+color: #D6DBDF;
+display: block;
 }
 
 .sidenavindex a:hover {
-  color: white;
+color: white;
 }
 /*/////////////// side nav bar end /////////////////*/
